@@ -65,7 +65,10 @@
                        },
                        data : JSON.stringify(body),
                        success : function(jxhr){
-                           alert("Notification sent successfully!");
+                           if(jxhr.results && jxhr.results[0].error)
+                               alert(jxhr.results[0].error);
+                           else
+                               alert("Notification sent successfully!");
                        },
                        error : function(){
                            alert("Error occured while sending notificaton!");
