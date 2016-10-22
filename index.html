@@ -4,14 +4,16 @@
         <meta charset="utf-8">
         <title>Android Push Message Sender</title>
         <link rel="icon" type="image/x-icon" href="https://avatars0.githubusercontent.com/u/3058201?v=3&s=40">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
         <style>
             form,h1 {
                 width: 100%;
                 text-align: center;
                 margin: 0px auto;
             }
-            input,textarea {
+            input,textarea{
                 width: 60%;
                 display: block;
                 font-size: medium;
@@ -30,52 +32,96 @@
     <body>
         <h1>Android Push Notification </h1>
         <form>
-            <label>Notification type :</label>
-            <input type="radio" id="gcmNotification" name="notificationType" value="GCM" checked/> 
-            <label for="gcmNotification">GCM</label>
-            <input type="radio" id="fcmNotification" name="notificationType" value="FCM" /> 
-            <label for="fcmNotification">FCM</label>
-            <input type="text" id="serverKey" placeholder="Enter API Key"  size="30" />
-            <input type="text" id="token" placeholder="Enter Subscription Token"  size="30" />
-            <textarea id="message" placeholder="Enter Message" rows="5"></textarea>
+        	<div class="implementation">
+	        	<label>Implementation type :</label>
+	            <input type="radio" id="gcmImplementation" name="implementationType" value="GCM" checked/> 
+	            <label for="gcmImplementation">GCM</label>
+	            <input type="radio" id="fcmImplementation" name="implementationType" value="FCM" /> 
+	            <label for="fcmImplementation">FCM</label>
+        	</div>
+        	<div class="target">
+        		<label>Target using:</label>
+	            <input type="radio" id="deviceRegistrationToken" name="targetType" value="deviceRegistrationToken" checked/> 
+	            <label for="deviceRegistrationToken">Device Registration Token</label>
+	            <input type="radio" id="topicName" name="targetType" value="topicName" /> 
+	            <label for="topicName">Topic Name</label>
+	            <input type="radio" id="deviceGroupName" name="targetType" value="deviceGroupName" /> 
+	            <label for="deviceGroupName">Device Group Name</label>
+        	</div>
+        	<div class="message">
+        		<input type="text" id="serverKey" placeholder="Enter API Key"  size="30" />
+            	<input type="text" id="to" placeholder="Enter Subscription Token"  size="30" />
+            	<div class="condition_wrapper" style="display:none">
+            		<select id="condition" style="width:60%" multiple></select>
+            	</div>
+            	<textarea id="message" placeholder="Enter Message" rows="5"></textarea>
+        	</div>
             <button id="sendNotification">Send Notification</button>
         </form>
         <script>
             $(function(){
-               $("#sendNotification").click(function(){
-                   var notificationType = $("input[name='notificationType']:checked").val();
-                   var url;
-                   if(notificationType.toLocaleLowerCase() == "fcm")
-                       url = "https://fcm.googleapis.com/fcm/send";
-                   else
-                       url = "https://gcm-http.googleapis.com/gcm/send";
-                   var autorizationKey = "key="+$("#serverKey").val();
-                   var body = {};
-                   body.to = $("#token").val();
-                   body.notification = {};
-                   body.notification.title = "Message via GitHub" ;
-                   body.notification.body = $("#message").val();
-                   body.notification.sound = "default";
-                   body.notification.color = "#00ff00";
-                   $.post({
-                       url : url,
-                       headers : {
-                           "content-Type" : "application/json",
-                           "Authorization" : autorizationKey,
-                       },
-                       data : JSON.stringify(body),
-                       success : function(jxhr){
-                           if(jxhr.results && jxhr.results[0].error)
-                               alert(jxhr.results[0].error);
-                           else
-                               alert("Notification sent successfully!");
-                       },
-                       error : function(){
-                           alert("Error occured while sending notificaton!");
-                       }
+            	$("#condition").select2({
+            		placeholder:'Enter Topic Name(s)',
+            		tags: [],
+            		tokenSeparators: [',', ' ']
+            	});
+            	$("input:radio[name='targetType']").change(function(){
+            		if($(this).val().toLowerCase() == "topicname"){
+            			$("#to").hide();
+            			$(".condition_wrapper").show();
+            		}else{
+            			$("#to").show();
+            			$(".condition_wrapper").hide();
+            		}
+            	});
+            	$("#sendNotification").click(function(){
+					var implementationType = $("input[name='implementationType']:checked").val();
+					var url;
+					if(implementationType.toLocaleLowerCase() == "fcm")
+						url = "https://fcm.googleapis.com/fcm/send";
+					else
+						url = "https://gcm-http.googleapis.com/gcm/send";
+					var autorizationKey = "key="+$("#serverKey").val();
+					var body = {};
+					if($("input:radio[name='targetType']:checked").val().toLowerCase() == "topicname"){
+						var condtionValue = $("#condition").select2("val");
+						if(condtionValue.length>1){
+							var conditionString;
+							for(var index in condtionValue)
+								conditionString = (conditionString) ? ( conditionString+" || '"+condtionValue[index]+"' in topics" ): ( "'"+condtionValue[index]+"' in topics" ) ;
+							body.condition = conditionString;	
+						} 
+						else if(condtionValue.length ==1)
+							body.to = "/topics/"+condtionValue[0];
+						else
+							return false;
+					}else{
+						body.to = $("#to").val();	
+					}
+					body.notification = {};
+					body.notification.title = "Message via GitHub" ;
+					body.notification.body = $("#message").val();
+					body.notification.sound = "default";
+					body.notification.color = "#00ff00";
+                   	$.post({
+						url : url,
+						headers : {
+                        	"content-Type" : "application/json",
+                            "Authorization" : autorizationKey,
+                       	},
+                       	data : JSON.stringify(body),
+                       	success : function(jxhr){
+                        	if(jxhr.results && jxhr.results[0].error)
+                            	alert(jxhr.results[0].error);
+                           	else
+                               	alert("Notification sent successfully!");
+                       	},
+                       	error : function(){
+                           	alert("Error occured while sending notificaton!");
+                       	}
                     });
                     return false;
-               }); 
+               	}); 
             });
         </script>
     </body>
