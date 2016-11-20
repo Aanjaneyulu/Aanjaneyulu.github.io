@@ -2,11 +2,16 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Android Push Message Sender</title>
+        <title>Android Push Message using GCM and FCM</title>
+        <meta name="author" content="Aanjaneyulu, Anjaneyulu ">
+        <meta name="description" content="GCM ,FCM , send push message to android devices to single device/topic/group ,single device, topic,device group">
         <link rel="icon" type="image/x-icon" href="https://avatars0.githubusercontent.com/u/3058201?v=3&s=40">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+		<link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.indigo-blue.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+		<script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
         <style>
             form,h1 {
                 width: 100%;
@@ -34,19 +39,29 @@
         <form>
         	<div class="implementation">
 	        	<label>Implementation type :</label>
-	            <input type="radio" id="gcmImplementation" name="implementationType" value="GCM" checked/> 
-	            <label for="gcmImplementation">GCM</label>
-	            <input type="radio" id="fcmImplementation" name="implementationType" value="FCM" /> 
-	            <label for="fcmImplementation">FCM</label>
+	        	<label for="gcmImplementation" class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
+	        		<input type="radio" id="gcmImplementation" name="implementationType" value="GCM" class="mdl-radio__button" checked/>
+	        		<span class="mdl-radio__label">GCM</span> 
+	        	</label>
+	            <label for="fcmImplementation" class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
+	            	<input type="radio" id="fcmImplementation" name="implementationType" value="FCM" class="mdl-radio__button"/> 
+	            	<span class="mdl-radio__label">FCM</span>
+	            </label>
         	</div>
         	<div class="target">
         		<label>Target using:</label>
-	            <input type="radio" id="deviceRegistrationToken" name="targetType" value="deviceRegistrationToken" checked/> 
-	            <label for="deviceRegistrationToken">Device Registration Token</label>
-	            <input type="radio" id="topicName" name="targetType" value="topicName" /> 
-	            <label for="topicName">Topic Name</label>
-	            <input type="radio" id="deviceGroupName" name="targetType" value="deviceGroupName" /> 
-	            <label for="deviceGroupName">Device Group Name</label>
+				<label for="deviceRegistrationToken" class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
+					<input type="radio" id="deviceRegistrationToken" name="targetType" value="deviceRegistrationToken" class="mdl-radio__button" checked/>
+					<span class="mdl-radio__label">Device Registration Token</span>
+				</label>
+	            <label for="topicName" class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
+					<input type="radio" id="topicName" name="targetType" value="topicName" class="mdl-radio__button" />
+					<span class="mdl-radio__label">Topic Name</span>
+				</label>
+				<label for="deviceGroupName" class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
+					<input type="radio" id="deviceGroupName" name="targetType" value="deviceGroupName" class="mdl-radio__button" /> 
+					<span class="mdl-radio__label">Device Group Name</span>
+				</label> 
         	</div>
         	<div class="message">
         		<input type="text" id="serverKey" placeholder="Enter API Key"  size="30" />
@@ -56,7 +71,8 @@
             	</div>
             	<textarea id="message" placeholder="Enter Message" rows="5"></textarea>
         	</div>
-            <button id="sendNotification">Send Notification</button>
+        	<div class="mdl-spinner mdl-js-spinner" id="progress"></div>
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" id="sendNotification">Send Notification</button>
         </form>
         <script>
             $(function(){
@@ -103,6 +119,7 @@
 					body.notification.body = $("#message").val();
 					body.notification.sound = "default";
 					body.notification.color = "#00ff00";
+					$("#progress").addClass("is-active");
                    	$.post({
 						url : url,
 						headers : {
@@ -120,6 +137,7 @@
                            	alert("Error occured while sending notificaton!");
                        	}
                     });
+                   	$("#progress").removeClass("is-active");
                     return false;
                	}); 
             });
