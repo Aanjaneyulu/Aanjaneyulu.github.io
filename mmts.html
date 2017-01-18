@@ -1,0 +1,102 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>hyderabad MMTS live status</title>
+        <meta name="author" content="Aanjaneyulu, Anjaneyulu ">
+        <meta name="description" content="MMTS Status,MMTS Live Status , Hyderabad MMTS Live Status">
+        <link rel="icon" type="image/x-icon" href="https://avatars0.githubusercontent.com/u/3058201?v=3&s=40">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <style>
+            #container{
+                width: 608px;
+            }
+            #left{
+                float: left;
+            }
+            #right{
+                float: right;
+            }
+            #left,#right{
+                width: 300px;
+                border-width: 2px;
+                border-style: solid;
+                border-color: black;
+                text-align: center;
+            }
+            #left>div,#right>div{
+                border-width: 2px;
+                border-style: solid;
+                border-color: black;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Hyderabad MMTS Live Status</h1>
+        <div id="container">
+            <div id="left" style="float:left;">
+                <div>
+                    <label>FL</label>
+                    <div id="FL"></div>
+                </div>
+                <div >
+                    <label>LF</label>
+                    <div id="LF"></div>
+                </div>
+                <div >
+                    <label>FH</label>
+                    <div id="FH"></div>
+                </div>
+            </div>
+            <div id="right">
+                <div >
+                    <label>HL</label>
+                    <div id="HL"></div>
+                </div>
+                <div >
+                    <label>LH</label>
+                    <div id="LH"></div>
+                </div>
+                <div >
+                    <label>HF</label>
+                    <div id="HF"></div>
+                </div>
+            </div>
+        </div>
+        <div id="test"></div>
+        <script type="text/javascript">
+            $(function(){
+                var url='https://anji.000webhostapp.com/mmts.php';
+                var routes=["FL","LF","FH","HL","LH","HF"];
+                function status(){
+                   $.ajax({
+                       url: url,
+                       success:function(data, textStatus, jqXHR ){
+                           var jsonObject=JSON.parse(data);
+                           for(var routeIndex in routes){
+                               var route=routes[routeIndex];
+                               var trains=jsonObject[route];
+                               if(trains){
+                                   var status="";
+                                   for(var trainIndex in trains){
+                                       var train=trains[trainIndex];
+                                       status+="<div><label>"+train.Trainno+"</label>"+" "+"<label>"+train.Station+"</label></div>";
+                                   }
+                                   $("#"+route).html(status);
+                               }else{
+                                   $("#"+route).html("No trains found!")
+                               }
+                           }
+                       },
+                       error:function( jqXHR, textStatus, errorThrown){
+                           console.log("failed to retrieve data!")
+                       }
+                   });   
+                }
+                status();
+                setInterval(status,20000);
+            });
+        </script>
+    </body>
+</html>
