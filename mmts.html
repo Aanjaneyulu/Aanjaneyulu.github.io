@@ -92,10 +92,10 @@
                        error:function( jqXHR, textStatus, errorThrown){
                            console.log("failed to retrieve data!")
                        }
-                   });   
+                   }); 
+                   setTimeout(status,20000);
                 }
                 status();
-                setInterval(status,20000);
             });
         </script>
     </body>
