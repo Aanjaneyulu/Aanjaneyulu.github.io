@@ -1,66 +1,62 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>hyderabad MMTS live status</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="author" content="Aanjaneyulu, Anjaneyulu ">
         <meta name="description" content="MMTS Status,MMTS Live Status , Hyderabad MMTS Live Status">
-        <link rel="icon" type="image/x-icon" href="https://avatars0.githubusercontent.com/u/3058201?v=3&s=40">
+        <title>hyderabad MMTS live status</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-        <style>
-            #container{
-                width: 608px;
-            }
-            #left{
-                float: left;
-            }
-            #right{
-                float: right;
-            }
-            #left,#right{
-                width: 300px;
-                border-width: 2px;
-                border-style: solid;
-                border-color: black;
-                text-align: center;
-            }
-            #left>div,#right>div{
-                border-width: 2px;
-                border-style: solid;
-                border-color: black;
-                text-align: center;
-            }
-        </style>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <link rel="icon" type="image/x-icon" href="https://avatars0.githubusercontent.com/u/3058201?v=3&s=40">
     </head>
     <body>
-        <h1>Hyderabad MMTS Live Status</h1>
-        <div id="container">
-            <div id="left" style="float:left;">
-                <div>
-                    <label>FL</label>
-                    <div id="FL"></div>
+        <div  id="container" class="container-fluid">
+            <div class="col-xs-12 page-header" ><h4 style="text-align:center">Hyderabad MMTS Live Status</h4></div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4" >
+                    <div class="jumbotron">
+                        <span class="label label-primary">Falaknuma <span class="glyphicon glyphicon-arrow-right"></span> Lingampally</span>
+                        <div id="FL">
+                        </div>
+                    </div>
                 </div>
-                <div >
-                    <label>LF</label>
-                    <div id="LF"></div>
+                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4" >
+                    <div class="jumbotron">
+                         <span class="label label-primary">Hyderabad <span class="glyphicon glyphicon-arrow-right"></span> Lingampally</span>
+                        <div id="HL">
+                        </div>
+                    </div>
                 </div>
-                <div >
-                    <label>FH</label>
-                    <div id="FH"></div>
+                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4" >
+                    <div class="jumbotron">
+                        <span class="label label-success">Lingampally <span class="glyphicon glyphicon-arrow-right"></span> Hyderabad</span>
+                        <div id="LH">
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div id="right">
-                <div >
-                    <label>HL</label>
-                    <div id="HL"></div>
+                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4" >
+                    <div class="jumbotron">
+                         <span class="label label-success">Lingampally <span class="glyphicon glyphicon-arrow-right"></span> Falaknuma</span>
+                        <div id="LF">
+                        </div>
+                    </div>
                 </div>
-                <div >
-                    <label>LH</label>
-                    <div id="LH"></div>
+                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4" >
+                    <div class="jumbotron">
+                         <span class="label label-warning">Falaknuma <span class="glyphicon glyphicon-arrow-right"></span> Hyderabad</span>
+                        <div id="FH">
+                        </div>
+                    </div>
                 </div>
-                <div >
-                    <label>HF</label>
-                    <div id="HF"></div>
+                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4" >
+                    <div class="jumbotron">
+                         <span class="label label-warning">Hyderabad <span class="glyphicon glyphicon-arrow-right"></span> Falaknuma</span>
+                        <div id="HF">
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
