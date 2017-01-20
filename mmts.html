@@ -14,7 +14,7 @@
     </head>
     <body>
         <div id="container" class="container-fluid">
-            <div class="page-header"><h4 style="text-align:center">Hyderabad MMTS Live Status</h4></div>
+            <div class="page-header"><h4 style="text-align:center">Hyderabad MMTS Live Status</h4></div>            
             <div class="row">
                 <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
                     <div class="panel panel-primary">
@@ -22,7 +22,7 @@
                             <h3 class="panel-title">Falaknuma <span class="glyphicon glyphicon-arrow-right"></span> Lingampally</h3>
                         </div>
                         <div class="panel-body">
-                            <table class="table">
+                            <table class="table table-hover">
                                  <thead>
                                     <th>#</th>
                                     <th>Train No</th>
@@ -34,13 +34,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4" >
+                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
                             <h3 class="panel-title">Hyderabad <span class="glyphicon glyphicon-arrow-right"></span> Lingampally</h3>
                         </div>
                         <div class="panel-body">
-                            <table class="table">
+                            <table class="table table-hover">
                                 <thead>
                                     <th>#</th>
                                     <th>Train No</th>
@@ -52,13 +52,14 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4" >
+                <div class="clearfix visible-sm-block"></div>
+                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
                    <div class="panel panel-success">
                         <div class="panel-heading">
                             <h3 class="panel-title">Lingampally <span class="glyphicon glyphicon-arrow-right"></span> Hyderabad</h3>
                        </div>
                         <div class="panel-body">
-                            <table class="table">
+                            <table class="table table-hover">
                                 <thead>
                                     <th>#</th>
                                     <th>Train No</th>
@@ -70,13 +71,14 @@
                         </div>
                     </div>
                 </div>
+                <div class="clearfix visible-md-block visible-lg-block"></div>
                 <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4" >
                     <div class="panel panel-success">
                         <div class="panel-heading">
                             <h3 class="panel-title">Lingampally <span class="glyphicon glyphicon-arrow-right"></span> Falaknuma</h3>
                         </div>
                         <div class="panel-body">
-                            <table class="table">
+                            <table class="table table-hover">
                                 <thead>
                                     <th>#</th>
                                     <th>Train No</th>
@@ -88,13 +90,14 @@
                         </div>
                     </div>
                 </div>
+                <div class="clearfix visible-sm-block"></div>
                 <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4" >
                       <div class="panel panel-danger">
                         <div class="panel-heading">
                             <h3 class="panel-title">Falaknuma <span class="glyphicon glyphicon-arrow-right"></span> Hyderabad</h3>
                         </div>
                         <div class="panel-body">
-                            <table class="table">
+                            <table class="table table-hover">
                                 <thead>
                                     <tr>
                                         <th>#</th>
@@ -114,7 +117,7 @@
                             <h3 class="panel-title">Hyderabad <span class="glyphicon glyphicon-arrow-right"></span> Falaknuma</h3>
                         </div>
                         <div class="panel-body">
-                            <table class="table">
+                            <table class="table table-hover">
                                 <thead>
                                     <tr>
                                         <th>#</th>
@@ -156,7 +159,7 @@
                            }
                        },
                        error:function( jqXHR, textStatus, errorThrown){
-                           var errosStatus='<tr><td colspan="3" style="text-align:center;">failed to retrieve data!</td></tr>';
+                           var errosStatus='<tr><td colspan="3" style="text-align:center;">failed to retrieve data.Try again after some time!</td></tr>';
                            $("#FL,#HL,#LH,#LF,#FH,#HF").html(errosStatus);
                            console.log("failed to retrieve data!");
                        }
