@@ -171,8 +171,8 @@
                            $("#FL,#HL,#LH,#LF,#FH,#HF").html(errosStatus);
                            console.log("failed to retrieve data!");
                        },
-                       complete:function(){
-                           setTimeout(status,10000); 
+                       complete:function(jqXHR, textStatus){
+                           textStatus=="success"?setTimeout(status,15000):setTimeout(status,30000); 
                        }
                    });   
                 }
