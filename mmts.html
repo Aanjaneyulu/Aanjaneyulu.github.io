@@ -165,14 +165,15 @@
                                    $("#"+route).html(status);
                                }
                            }
+                           setTimeout(status,10000);
                        },
                        error:function( jqXHR, textStatus, errorThrown){
                            var errosStatus='<tr><td colspan="3" style="text-align:center;">failed to retrieve data.Try again after some time!</td></tr>';
                            $("#FL,#HL,#LH,#LF,#FH,#HF").html(errosStatus);
                            console.log("failed to retrieve data!");
+                           setTimeout(status,20000);
                        }
                    }); 
-                   setTimeout(status,15000);
                 }
                 status();
             });
