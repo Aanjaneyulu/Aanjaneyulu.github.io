@@ -108,10 +108,10 @@ $(function () {
     function handleCustonView(data, success){
         var status = "";
         if(success){
-            var jsonObject = JSON.parse(data);
-            if(Object.keys(jsonObject).length){
-                var routeList = getRoute($("#from").val(), $("#to").val());
-                if(routeList.length){
+            var routeList = getRoute($("#from").val(), $("#to").val());
+            if(routeList.length){
+                var jsonObject = JSON.parse(data);
+                if(Object.keys(jsonObject).length){
                     for(var index in routeList){
                         var route = routeList[index];
                         var trains = jsonObject[route];
@@ -122,13 +122,11 @@ $(function () {
                             }
                         }
                     }
-                    if(!status)
-                        status = '<tr><td colspan="3" style="text-align:center;">No trains found!</td></tr>'
-                }else{
-                    status = '<tr><td colspan="3" style="text-align:center;">No route found!</td></tr>';
                 }
+                if(!status)
+                    status = '<tr><td colspan="3" style="text-align:center;">No trains found!</td></tr>';
             }else{
-                status = '<tr><td colspan="3" style="text-align:center;">No trains found!</td></tr>';
+                status = '<tr><td colspan="3" style="text-align:center;">No route found!</td></tr>';
             }
         }else{
             status = '<tr><td colspan="3" style="text-align:center;">failed to retrieve data.Try again after some time!</td></tr>';
