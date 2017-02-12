@@ -1,183 +1,188 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta name="author" content="Aanjaneyulu, Anjaneyulu ">
-        <meta name="description" content="MMTS Status,MMTS Live Status , Hyderabad MMTS Live Status">
-        <title>hyderabad MMTS live status</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-        <link rel="icon" type="image/x-icon" href="https://avatars0.githubusercontent.com/u/3058201?v=3&s=40">
-        <script>
-          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-          })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-          ga('create', 'UA-51494308-1', 'auto');
-          ga('send', 'pageview');
-        </script>
-    </head>
-    <body>
-        <div id="container" class="container-fluid">
-            <div class="page-header"><h4 style="text-align:center">Hyderabad MMTS Live Status</h4></div>            
-            <div class="row">
-                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <h3 class="panel-title">Falaknuma <span class="glyphicon glyphicon-arrow-right"></span> Lingampally</h3>
-                        </div>
-                        <div class="panel-body">
-                            <table class="table table-hover">
-                                 <thead>
-                                    <th>#</th>
-                                    <th>Train No</th>
-                                    <th>Station</th>
-                                </thead>
-                                <tbody id="FL" >
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Aanjaneyulu, Anjaneyulu ">
+    <meta name="description" content="MMTS Status,MMTS Live Status , Hyderabad MMTS Live Status">
+    <title>hyderabad MMTS live status</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+    <link rel="icon" type="image/x-icon" href="https://avatars0.githubusercontent.com/u/3058201?v=3&s=40">
+    <script src="mmts.js"></script>
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-51494308-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+</head>
+<body>
+<div id="container" class="container-fluid">
+    <div class="page-header"><h4 style="text-align:center">Hyderabad MMTS Live Status<button id="flipView" type="button" class="btn btn-primary" style="float: right">flip</button></h4></div>
+    <div id="customView" class="form-inline">
+        <div class="form-group">
+            <div class="input-group">
+                <label class="input-group-addon control-label">From</label>
+                <select id="from" class="form-control" placeholder="From..."></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="input-group">
+                <label class="input-group-addon control-label">To</label>
+                <select id="to" class="form-control" placeholder="To.."></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <button id="search" type="button" class="center-block btn btn-primary">Search Trains</button>
+        </div>
+        <table class="table table-hover">
+            <thead>
+            <th>Train No</th>
+            <th>Station</th>
+            </thead>
+            <tbody id="result">
+            </tbody>
+        </table>
+    </div>
+    <div id="defaultView" class="row hidden">
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Falaknuma <span class="glyphicon glyphicon-arrow-right"></span> Lingampally
+                    </h3>
                 </div>
-                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <h3 class="panel-title">Hyderabad <span class="glyphicon glyphicon-arrow-right"></span> Lingampally</h3>
-                        </div>
-                        <div class="panel-body">
-                            <table class="table table-hover">
-                                <thead>
-                                    <th>#</th>
-                                    <th>Train No</th>
-                                    <th>Station</th>
-                                </thead>
-                                <tbody id="HL">
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                <div class="clearfix visible-sm-block"></div>
-                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-                   <div class="panel panel-success">
-                        <div class="panel-heading">
-                            <h3 class="panel-title">Lingampally <span class="glyphicon glyphicon-arrow-right"></span> Hyderabad</h3>
-                       </div>
-                        <div class="panel-body">
-                            <table class="table table-hover">
-                                <thead>
-                                    <th>#</th>
-                                    <th>Train No</th>
-                                    <th>Station</th>
-                                </thead>
-                                <tbody id="LH">
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                <div class="clearfix visible-md-block visible-lg-block"></div>
-                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4" >
-                    <div class="panel panel-success">
-                        <div class="panel-heading">
-                            <h3 class="panel-title">Lingampally <span class="glyphicon glyphicon-arrow-right"></span> Falaknuma</h3>
-                        </div>
-                        <div class="panel-body">
-                            <table class="table table-hover">
-                                <thead>
-                                    <th>#</th>
-                                    <th>Train No</th>
-                                    <th>Station</th>
-                                </thead>
-                                <tbody id="LF">
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                <div class="clearfix visible-sm-block"></div>
-                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4" >
-                      <div class="panel panel-danger">
-                        <div class="panel-heading">
-                            <h3 class="panel-title">Falaknuma <span class="glyphicon glyphicon-arrow-right"></span> Hyderabad</h3>
-                        </div>
-                        <div class="panel-body">
-                            <table class="table table-hover">
-                                <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>Train No</th>
-                                        <th>Station</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="FH">
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4" >
-                    <div class="panel panel-danger">
-                        <div class="panel-heading">
-                            <h3 class="panel-title">Hyderabad <span class="glyphicon glyphicon-arrow-right"></span> Falaknuma</h3>
-                        </div>
-                        <div class="panel-body">
-                            <table class="table table-hover">
-                                <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>Train No</th>
-                                        <th>Station</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="HF">
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+                <div class="panel-body">
+                    <table class="table table-hover">
+                        <thead>
+                        <th>#</th>
+                        <th>Train No</th>
+                        <th>Station</th>
+                        </thead>
+                        <tbody id="FL" class="defaultResult">
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
-        <script type="text/javascript">
-            $(function(){
-                var url='https://anji.000webhostapp.com/mmts.php';
-                var routes=["FL","LF","FH","HL","LH","HF"];
-                function status(){
-                   $.ajax({
-                       url: url,
-                       success:function(data, textStatus, jqXHR ){
-                           var jsonObject=JSON.parse(data);
-                           for(var routeIndex in routes){
-                               var route=routes[routeIndex];
-                               var trains=jsonObject[route];
-                               var status="";
-                               if(trains){
-                                   for(var i=0;i<trains.length;i++){
-                                       var train=trains[i];
-                                       status+="<tr><th>"+(i+1)+"</th><td>"+train.Trainno+"</td><td>"+train.Station+"</td></tr>";
-                                   }
-                                   $("#"+route).html(status);
-                               }else{
-                                   status='<tr><td colspan="3" style="text-align:center;">No train found!</td></tr>';
-                                   $("#"+route).html(status);
-                               }
-                           }
-                       },
-                       error:function( jqXHR, textStatus, errorThrown){
-                           var errosStatus='<tr><td colspan="3" style="text-align:center;">failed to retrieve data.Try again after some time!</td></tr>';
-                           $("#FL,#HL,#LH,#LF,#FH,#HF").html(errosStatus);
-                           console.log("failed to retrieve data!");
-                       },
-                       complete:function(jqXHR, textStatus){
-                           textStatus=="success"?setTimeout(status,15000):setTimeout(status,30000); 
-                       }
-                   });   
-                }
-                status();
-            });
-        </script>
-    </body>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Hyderabad <span class="glyphicon glyphicon-arrow-right"></span> Lingampally
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <table class="table table-hover">
+                        <thead>
+                        <th>#</th>
+                        <th>Train No</th>
+                        <th>Station</th>
+                        </thead>
+                        <tbody id="HL" class="defaultResult">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix visible-sm-block"></div>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Lingampally <span class="glyphicon glyphicon-arrow-right"></span> Hyderabad
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <table class="table table-hover">
+                        <thead>
+                        <th>#</th>
+                        <th>Train No</th>
+                        <th>Station</th>
+                        </thead>
+                        <tbody id="LH" class="defaultResult">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix visible-md-block visible-lg-block"></div>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Lingampally <span class="glyphicon glyphicon-arrow-right"></span> Falaknuma
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <table class="table table-hover">
+                        <thead>
+                        <th>#</th>
+                        <th>Train No</th>
+                        <th>Station</th>
+                        </thead>
+                        <tbody id="LF" class="defaultResult">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix visible-sm-block"></div>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Falaknuma <span class="glyphicon glyphicon-arrow-right"></span> Hyderabad
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Train No</th>
+                            <th>Station</th>
+                        </tr>
+                        </thead>
+                        <tbody id="FH" class="defaultResult">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Hyderabad <span class="glyphicon glyphicon-arrow-right"></span> Falaknuma
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Train No</th>
+                            <th>Station</th>
+                        </tr>
+                        </thead>
+                        <tbody id="HF" class="defaultResult">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
 </html>
