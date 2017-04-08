@@ -158,6 +158,10 @@ $(function () {
     $("#flipView").click(function(){
        $("#customView").toggleClass("hidden");
         $("#defaultView").toggleClass("hidden");
+        if($("#flipView").text().toLowercase() == 'search')
+            $("#flipView").text("Home")
+        else
+            $("#flipView").text("Search");
     });
     status();
 });
