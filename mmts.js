@@ -158,7 +158,7 @@ $(function () {
     $("#flipView").click(function(){
        $("#customView").toggleClass("hidden");
         $("#defaultView").toggleClass("hidden");
-        if($("#flipView").text().toLowercase() == 'search')
+        if($("#flipView").text().toLowerCase() == 'search')
             $("#flipView").text("Home")
         else
             $("#flipView").text("Search");
