@@ -1,5 +1,5 @@
 /**
- * Created by KH1509 on 2/12/2017.
+ * Created by Anjaneyulu on 2/12/2017.
  */
 $(function () {
     var url = 'https://anji.000webhostapp.com/mmts.php';
