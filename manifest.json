@@ -1,0 +1,31 @@
+{
+    "short_name":"HYLITES",
+    "name":"Hyderabad Live Train Enquiry System",
+    "icons": [
+        {
+        "src": "icons/launcher-icon-1x.png",
+        "type": "image/png",
+        "sizes": "48x48"
+        },
+        {
+        "src": "icons/launcher-icon-2x.png",
+        "type": "image/png",
+        "sizes": "96x96"
+        },
+        {
+        "src": "icons/launcher-icon-4x.png",
+        "type": "image/png",
+        "sizes": "192x192"
+        },
+        {
+            "src": "icons/splashscreen.png",
+            "type": "image/png",
+            "sizes": "512x512"
+        }
+    ],
+    "start_url":"mmts.html?utm_source=homescreen",
+    "theme_color": "#2196F3",
+    "background_color": "#2196F3",
+    "orientation": "portrait",
+    "display":"standalone"
+}
