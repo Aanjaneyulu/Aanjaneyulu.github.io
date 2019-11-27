@@ -16,7 +16,7 @@ $(function () {
     } else {
         console.warn('Push messaging is not supported');
     }
-    var url = 'https://anji.000webhostapp.com/mmts.php';
+    var url = 'http://122.252.246.246:8081/MMTSLiveeng.html';
     var connectingPaths = {
         "F_S": [
             "Faluknama", "Huppuguda", "Yakutpura", "Dabirpura", "Malakpet", "Kacheguda", "Vidyanagar", "Jamai Osmania", "Arts College", "Sitafalmandi", "Secunderabad"
@@ -148,6 +148,11 @@ $(function () {
         $("#result").html(status);
     }
     var timerID=[];
+	$.ajaxPrefilter(function(options) {
+		if (options.crossDomain && jQuery.support.cors) {
+			options.url = 'https://cors-anywhere.herokuapp.com/' + options.url;
+		}
+	});
     function status() {
         $.ajax({
             url: url,
