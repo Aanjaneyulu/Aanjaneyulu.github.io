@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Global Site Tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-107711861-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'UA-107710546-1');
+        </script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="author" content="Aanjaneyulu, Anjaneyulu ">
+        <meta name="description" content="Web Push">
+        <meta name="theme-color" content="#2196F3">
+        <title>Web Push</title>
+        <link rel="manifest" href="/manifest_push.json">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <link rel="icon" type="image/x-icon" href="https://avatars0.githubusercontent.com/u/3058201?v=3&s=40">
+        <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
+        <script src="./webPush.js"></script>
+        <style>
+            fieldset {
+                padding: 0 1.5rem 0 1.5rem;
+                border-width: .2rem 0 0;
+                border: solid #f7f7f9;
+            }
+            .footer {
+                position: fixed;
+                left: 0;
+                bottom: 0;
+                width: 100%;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <form>
+                <fieldset class="bd-example">
+                    <legend>Subscription</legend>
+                    <div class="form-group">
+                        <label for="firstName">First Name</label>
+                        <input type="text" class="form-control" id="firstName" placeholder="Enter First Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Last Name</label>
+                        <input type="text" class="form-control" id="lastName" placeholder="Enter Last Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Id</label>
+                        <input type="email" class="form-control" id="email" placeholder="Enter Email Id">
+                    </div>
+                    <div class="form-group">
+                        <label for="mobile">Mobile Number</label>
+                        <input type="mobile" class="form-control" id="mobile" placeholder="Enter Mobile Number">
+                    </div>
+                    <div class="form-group">
+                        <label for="country">Country</label>
+                        <input type="text" class="form-control" id="country" placeholder="Enter Country">
+                    </div>
+                    <div class="form-group">
+                        <label for="state">State</label>
+                        <input type="text" class="form-control" id="state" placeholder="Enter State">
+                    </div>
+                    <div class="form-group">
+                        <label for="appId">App Id</label>
+                        <input type="text" class="form-control" id="appId" placeholder="Enter App Id">
+                    </div>
+                    <div class="form-group">
+                        <label for="url">URL</label>
+                        <input type="text" class="form-control" id="url" placeholder="Enter Push Notification Server URL">
+                    </div>
+                    <div class="form-group custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="smsSubscription">
+                        <label class="custom-control-label" for="smsSubscription">Enable SMS subscription</label>
+                    </div>
+                    <div class="form-group custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="emailSubscription">
+                        <label class="custom-control-label" for="emailSubscription">Enable Email subscription</label>
+                    </div>
+                    <div class="form-group">
+                        <button type="button" id="subscribeUser" class="btn btn-primary">Subscribe User</button>
+                    </div>
+                </fieldset>
+                <fieldset id="responseContainer" style="display:none">
+                    <legend>Response</legend>
+                    <div class="form-group">
+                        <pre id="response"></pre>
+                        <button type="button" id="triggerEvent" class="btn btn-primary">Trigger Sample Push</button>
+                    </div>
+                </fieldset>
+                <fieldset id="messageContainer" style="display:none">
+                    <legend>Message</legend>
+                    <div class="form-group">
+                        <pre id="message"></pre>
+                    </div>
+                </fieldset>
+                <div class="alert alert-dismissible footer" id="eventResponseContainer" style="display:none">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong class="eventResponseMessage"></strong>
+                </div>
+            </form>
+          </div>
+    </body>
+</html>

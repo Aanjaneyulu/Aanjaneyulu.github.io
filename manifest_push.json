@@ -1,0 +1,31 @@
+{
+    "short_name":"Web push sample",
+    "name":"Sample PWA on web Push",
+    "icons": [
+        {
+        "src": "icons/launcher-icon-push-1x.png",
+        "type": "image/png",
+        "sizes": "48x48"
+        },
+        {
+        "src": "icons/launcher-icon-push-2x.png",
+        "type": "image/png",
+        "sizes": "96x96"
+        },
+        {
+        "src": "icons/launcher-icon-push-4x.png",
+        "type": "image/png",
+        "sizes": "192x192"
+        },
+        {
+            "src": "icons/splashscreen-push.png",
+            "type": "image/png",
+            "sizes": "512x512"
+        }
+    ],
+    "start_url":"web.html?utm_source=homescreen",
+    "theme_color": "#003E75",
+    "background_color": "#003E75",
+    "orientation": "portrait",
+    "display":"standalone"
+}
